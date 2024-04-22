@@ -47,8 +47,8 @@ for i in range(num_of_enemies):
 	enemy_img.append(pygame.image.load("alien.png"))
 	enemyX.append(random.randint(0,736))
 	enemyY.append(random.randint(20,100))
-	enemyX_change.append(1)
-	enemyY_change.append(30)
+	enemyX_change.append(10)
+	enemyY_change.append(10)
 
 #Bullet
 #ready - cant see bullet on screen
@@ -120,9 +120,9 @@ while running:
 		#if keystroke check whether right or left
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_LEFT:
-				playerX_change = -4
+				playerX_change = -1
 			if event.key == pygame.K_RIGHT:
-				playerX_change = 4
+				playerX_change = 1
 			if event.key == pygame.K_SPACE:
 				if bullet_state == "ready":
 					bullet_sound = mixer.Sound("laser.wav")
@@ -161,10 +161,10 @@ while running:
 		enemyX[i] += enemyX_change[i]
 	#boundaries for enemy
 		if enemyX[i] <= 0:
-			enemyX_change[i] = 2
+			enemyX_change[i] = 0.1
 			enemyY[i] += enemyY_change[i]
 		elif enemyX[i] >= 736:
-			enemyX_change[i] = -2
+			enemyX_change[i] = -0.1
 			enemyY[i] += enemyY_change[i]
 
 		#collision
